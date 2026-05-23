@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="styles.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,600;0,700;0,800;0,900;1,400;1,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
 </head>
 <body>
 
@@ -28,8 +28,9 @@
 
   <!-- ── HERO ── -->
   <div class="hero">
-    <div class="hero-eyebrow">✈️ May 30 – Jun 6, 2026</div>
-    <h1 class="hero-heading" id="hero-heading">Lisboa<br/><em>awaits you.</em></h1>
+    <div class="hero-eyebrow">✈️ may 30 – jun 6, 2026</div>
+    <h1 class="hero-heading" id="hero-heading">lisboa<br/><em>u're gonna love it.</em></h1>
+    <div class="hero-sub">your little pocket guide 🌸</div>
     <div class="hero-chips">
       <div class="hero-chip">📍 Lisbon, Portugal</div>
       <div class="hero-chip">🌡️ ~24 °C / 75 °F</div>
@@ -39,22 +40,42 @@
 
   <!-- ── NAV ── -->
   <nav class="nav">
-    <button class="nav-btn active" data-tab="overview">Overview</button>
-    <button class="nav-btn" data-tab="suggestions">Explore</button>
-    <button class="nav-btn" data-tab="payments">Wallet</button>
-    <button class="nav-btn" data-tab="agent">Sofia</button>
+    <button class="nav-btn active" data-tab="overview">overview</button>
+    <button class="nav-btn" data-tab="suggestions">explore</button>
+    <button class="nav-btn" data-tab="payments">wallet</button>
+    <button class="nav-btn" data-tab="agent">sofia ✨</button>
   </nav>
 
   <main class="main">
 
     <!-- ══ OVERVIEW ══ -->
     <section id="tab-overview" class="tab-section active">
+
+      <!-- Stat row -->
       <div class="stat-row">
-        <div class="stat-card"><div class="stat-icon">💶</div><div class="stat-val" id="ov-spent">€0</div><div class="stat-label">Spent</div></div>
-        <div class="stat-card"><div class="stat-icon">🎯</div><div class="stat-val" id="ov-remaining">—</div><div class="stat-label">Remaining</div></div>
-        <div class="stat-card"><div class="stat-icon">❤️</div><div class="stat-val" id="ov-places">0</div><div class="stat-label">Saved</div></div>
-        <div class="stat-card"><div class="stat-icon">🧾</div><div class="stat-val" id="ov-transactions">0</div><div class="stat-label">Expenses</div></div>
+        <div class="stat-card">
+          <div class="stat-icon">💶</div>
+          <div class="stat-val" id="ov-spent">€0</div>
+          <div class="stat-label">Spent</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">🎯</div>
+          <div class="stat-val" id="ov-remaining">—</div>
+          <div class="stat-label">Remaining</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">❤️</div>
+          <div class="stat-val" id="ov-places">0</div>
+          <div class="stat-label">Saved</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">🧾</div>
+          <div class="stat-val" id="ov-transactions">0</div>
+          <div class="stat-label">Expenses</div>
+        </div>
       </div>
+
+      <!-- Budget -->
       <div class="section-block">
         <div class="section-label">Trip Budget</div>
         <div class="budget-row">
@@ -63,17 +84,46 @@
         </div>
         <div id="budget-bar-wrap" style="display:none" class="budget-bar-wrap">
           <div class="budget-bar"><div class="budget-bar-fill" id="budget-bar-fill"></div></div>
-          <div class="budget-bar-labels"><span id="budget-bar-spent">€0 spent</span><span id="budget-bar-total">of €0</span></div>
+          <div class="budget-bar-labels">
+            <span id="budget-bar-spent">€0 spent</span>
+            <span id="budget-bar-total">of €0</span>
+          </div>
         </div>
       </div>
-      <div class="section-label">Essential Tips</div>
+
+      <!-- Tips grid -->
+      <div class="section-label">essential tips ✨</div>
       <div class="tips-grid">
-        <div class="tip-card"><div class="tip-card-icon">🚌</div><div class="tip-card-title">Viva Viagem Card</div><div class="tip-card-body">Load it with credit — works on metro, trams, buses & ferries. Far cheaper than single tickets.</div></div>
-        <div class="tip-card"><div class="tip-card-icon">🍷</div><div class="tip-card-title">Prato do Dia</div><div class="tip-card-body">Daily special at local tascas — full meal with wine for €10–12. Best value in Europe.</div></div>
-        <div class="tip-card"><div class="tip-card-icon">🌅</div><div class="tip-card-title">Miradouros at Sunset</div><div class="tip-card-body">Portas do Sol, Santa Catarina, São Pedro de Alcântara. Arrive 30 min before sunset.</div></div>
-        <div class="tip-card"><div class="tip-card-icon">👟</div><div class="tip-card-title">Comfortable Shoes</div><div class="tip-card-body">Lisbon's hills and cobblestones are beautiful but brutal. No new shoes on this trip.</div></div>
-        <div class="tip-card"><div class="tip-card-icon">💳</div><div class="tip-card-title">Keep Cash On Hand</div><div class="tip-card-body">Many tascas and market stalls are cash-only. Keep €20–30 daily.</div></div>
-        <div class="tip-card"><div class="tip-card-icon">☀️</div><div class="tip-card-title">Beat the Midday Heat</div><div class="tip-card-body">Sun is intense by noon. Plan outdoor sightseeing before 11 AM or after 5 PM.</div></div>
+        <div class="tip-card">
+          <div class="tip-card-icon">🚌</div>
+          <div class="tip-card-title">Viva Viagem Card</div>
+          <div class="tip-card-body">Load it with credit — works on metro, trams, buses & ferries. Far cheaper than single tickets.</div>
+        </div>
+        <div class="tip-card">
+          <div class="tip-card-icon">🍷</div>
+          <div class="tip-card-title">Prato do Dia</div>
+          <div class="tip-card-body">Daily special at local tascas — full meal with wine for €10–12. Best value in Europe.</div>
+        </div>
+        <div class="tip-card">
+          <div class="tip-card-icon">🌅</div>
+          <div class="tip-card-title">Miradouros at Sunset</div>
+          <div class="tip-card-body">Portas do Sol, Santa Catarina, São Pedro de Alcântara. Arrive 30 min before sunset.</div>
+        </div>
+        <div class="tip-card">
+          <div class="tip-card-icon">👟</div>
+          <div class="tip-card-title">Comfortable Shoes</div>
+          <div class="tip-card-body">Lisbon's hills and cobblestones are beautiful but brutal. No new shoes on this trip.</div>
+        </div>
+        <div class="tip-card">
+          <div class="tip-card-icon">💳</div>
+          <div class="tip-card-title">Keep Cash On Hand</div>
+          <div class="tip-card-body">Many tascas and market stalls are cash-only. Keep €20–30 daily.</div>
+        </div>
+        <div class="tip-card">
+          <div class="tip-card-icon">☀️</div>
+          <div class="tip-card-title">Beat the Midday Heat</div>
+          <div class="tip-card-body">Sun is intense by noon. Plan outdoor sightseeing before 11 AM or after 5 PM.</div>
+        </div>
       </div>
     </section>
 
@@ -92,9 +142,13 @@
 
     <!-- ══ PAYMENTS ══ -->
     <section id="tab-payments" class="tab-section">
+
+      <!-- Add form -->
       <div class="section-label">Add Expense</div>
       <div class="glass-card">
-        <div class="form-group"><input type="text" id="exp-desc" class="pill-input full" placeholder="Description — e.g. Lunch at Alfama" /></div>
+        <div class="form-group">
+          <input type="text" id="exp-desc" class="pill-input full" placeholder="Description — e.g. Lunch at Alfama" />
+        </div>
         <div class="form-row2">
           <input type="number" id="exp-amount" class="pill-input" placeholder="€ Amount" min="0" step="0.01" />
           <select id="exp-category" class="pill-input">
@@ -111,17 +165,27 @@
           <button class="pill-btn wide" onclick="addExpense()">Add Expense</button>
         </div>
       </div>
+
+      <!-- Category breakdown -->
       <div class="section-label">By Category</div>
-      <div class="glass-card" id="category-summary"><p class="empty-state">No expenses yet.</p></div>
+      <div class="glass-card" id="category-summary">
+        <p class="empty-state">No expenses yet.</p>
+      </div>
+
+      <!-- Expense list -->
       <div class="expense-list-header">
         <div class="section-label" style="margin:0">All Expenses</div>
         <span class="total-badge" id="expense-total-badge">€0.00</span>
       </div>
-      <div class="glass-card" id="expense-list"><p class="empty-state">Start tracking your Lisbon spending!</p></div>
+      <div class="glass-card" id="expense-list">
+        <p class="empty-state">Start tracking your Lisbon spending!</p>
+      </div>
     </section>
 
     <!-- ══ TRAVEL AGENT ══ -->
     <section id="tab-agent" class="tab-section">
+
+      <!-- Sofia profile -->
       <div class="sofia-card">
         <div class="sofia-avatar">🧳</div>
         <div class="sofia-info">
@@ -131,42 +195,129 @@
         </div>
         <div class="sofia-status"><span class="online-dot"></span> Online</div>
       </div>
+
+      <!-- Topic buttons -->
       <div class="section-label">Ask Sofia About</div>
       <div class="topic-grid">
-        <button class="topic-card" onclick="showAdvice('neighbourhood')"><span class="topic-icon">🏘️</span><span class="topic-label">Neighbourhoods</span></button>
-        <button class="topic-card" onclick="showAdvice('food')"><span class="topic-icon">🍽️</span><span class="topic-label">Food Guide</span></button>
-        <button class="topic-card" onclick="showAdvice('transport')"><span class="topic-icon">🚌</span><span class="topic-label">Getting Around</span></button>
-        <button class="topic-card" onclick="showAdvice('budget')"><span class="topic-icon">💶</span><span class="topic-label">Budget Tips</span></button>
-        <button class="topic-card" onclick="showAdvice('safety')"><span class="topic-icon">🔒</span><span class="topic-label">Safety & Scams</span></button>
-        <button class="topic-card" onclick="showAdvice('packing')"><span class="topic-icon">🎒</span><span class="topic-label">Packing List</span></button>
-        <button class="topic-card" onclick="showAdvice('fado')"><span class="topic-icon">🎵</span><span class="topic-label">Fado & Nightlife</span></button>
-        <button class="topic-card" onclick="showAdvice('daytrips')"><span class="topic-icon">🌊</span><span class="topic-label">Day Trips</span></button>
+        <button class="topic-card" onclick="showAdvice('neighbourhood')">
+          <span class="topic-icon">🏘️</span>
+          <span class="topic-label">Neighbourhoods</span>
+        </button>
+        <button class="topic-card" onclick="showAdvice('food')">
+          <span class="topic-icon">🍽️</span>
+          <span class="topic-label">Food Guide</span>
+        </button>
+        <button class="topic-card" onclick="showAdvice('transport')">
+          <span class="topic-icon">🚌</span>
+          <span class="topic-label">Getting Around</span>
+        </button>
+        <button class="topic-card" onclick="showAdvice('budget')">
+          <span class="topic-icon">💶</span>
+          <span class="topic-label">Budget Tips</span>
+        </button>
+        <button class="topic-card" onclick="showAdvice('safety')">
+          <span class="topic-icon">🔒</span>
+          <span class="topic-label">Safety & Scams</span>
+        </button>
+        <button class="topic-card" onclick="showAdvice('packing')">
+          <span class="topic-icon">🎒</span>
+          <span class="topic-label">Packing List</span>
+        </button>
+        <button class="topic-card" onclick="showAdvice('fado')">
+          <span class="topic-icon">🎵</span>
+          <span class="topic-label">Fado & Nightlife</span>
+        </button>
+        <button class="topic-card" onclick="showAdvice('daytrips')">
+          <span class="topic-icon">🌊</span>
+          <span class="topic-label">Day Trips</span>
+        </button>
       </div>
+
+      <!-- Advice panel -->
       <div class="advice-panel" id="advice-card" style="display:none">
-        <div class="advice-panel-header"><span id="advice-icon" class="advice-panel-icon"></span><h3 id="advice-title" class="advice-panel-title"></h3></div>
+        <div class="advice-panel-header">
+          <span id="advice-icon" class="advice-panel-icon"></span>
+          <h3 id="advice-title" class="advice-panel-title"></h3>
+        </div>
         <div id="advice-body" class="advice-panel-body"></div>
       </div>
+
+      <!-- 8-day itinerary -->
       <div class="section-label" style="margin-top:8px">8-Day Itinerary</div>
       <div class="glass-card">
         <div class="itinerary">
-          <div class="itin-day"><div class="itin-day-chip">Day 1<br/><small>May 30</small></div><div class="itin-day-body"><strong>Arrival & Baixa/Chiado</strong><p>Check in, stroll Rua Augusta. Pastel de nata stop. Evening rooftop drinks at TOPO Chiado.</p></div></div>
-          <div class="itin-day"><div class="itin-day-chip">Day 2<br/><small>May 31</small></div><div class="itin-day-body"><strong>Alfama & Fado Night</strong><p>São Jorge Castle, Alfama alleys, Portas do Sol. Evening: authentic fado at Tasca do Chico — book ahead!</p></div></div>
-          <div class="itin-day"><div class="itin-day-chip">Day 3<br/><small>Jun 1</small></div><div class="itin-day-body"><strong>Belém District</strong><p>Jerónimos Monastery, Torre de Belém, MAAT. The original pastel de nata at Pastéis de Belém.</p></div></div>
-          <div class="itin-day"><div class="itin-day-chip">Day 4<br/><small>Jun 2</small></div><div class="itin-day-body"><strong>Day Trip: Sintra</strong><p>Train from Rossio (40 min, €2.35). Pena Palace first thing. Quinta da Regaleira if time allows.</p></div></div>
-          <div class="itin-day"><div class="itin-day-chip">Day 5<br/><small>Jun 3</small></div><div class="itin-day-body"><strong>LX Factory & Santos</strong><p>LX Factory market. Explore Santos & Cais do Sodré. Pink Street for evening drinks.</p></div></div>
-          <div class="itin-day"><div class="itin-day-chip">Day 6<br/><small>Jun 4</small></div><div class="itin-day-body"><strong>Day Trip: Arrábida</strong><p>Rent a car — turquoise waters rivalling the Caribbean. Pack a picnic. Stop at a winery on the way back.</p></div></div>
-          <div class="itin-day"><div class="itin-day-chip">Day 7<br/><small>Jun 5</small></div><div class="itin-day-body"><strong>Príncipe Real & Graça</strong><p>Antique market, botanical garden, Museu do Azulejo. Sunset at Miradouro da Graça.</p></div></div>
-          <div class="itin-day"><div class="itin-day-chip">Day 8<br/><small>Jun 6</small></div><div class="itin-day-body"><strong>Last Bites & Departure</strong><p>Time Out Market feast. Pick up ginjinha, tinned fish, azulejo tiles. Airport: allow 45 min from centre.</p></div></div>
+          <div class="itin-day">
+            <div class="itin-day-chip">Day 1<br/><small>May 30</small></div>
+            <div class="itin-day-body">
+              <strong>Arrival & Baixa/Chiado</strong>
+              <p>Check in, stroll Rua Augusta. Pastel de nata stop. Evening rooftop drinks at TOPO Chiado.</p>
+            </div>
+          </div>
+          <div class="itin-day">
+            <div class="itin-day-chip">Day 2<br/><small>May 31</small></div>
+            <div class="itin-day-body">
+              <strong>Alfama & Fado Night</strong>
+              <p>São Jorge Castle, Alfama alleys, Portas do Sol. Evening: authentic fado at Tasca do Chico — book ahead!</p>
+            </div>
+          </div>
+          <div class="itin-day">
+            <div class="itin-day-chip">Day 3<br/><small>Jun 1</small></div>
+            <div class="itin-day-body">
+              <strong>Belém District</strong>
+              <p>Jerónimos Monastery, Torre de Belém, MAAT. The original pastel de nata at Pastéis de Belém.</p>
+            </div>
+          </div>
+          <div class="itin-day">
+            <div class="itin-day-chip">Day 4<br/><small>Jun 2</small></div>
+            <div class="itin-day-body">
+              <strong>Day Trip: Sintra</strong>
+              <p>Train from Rossio (40 min, €2.35). Pena Palace first thing. Quinta da Regaleira if time allows.</p>
+            </div>
+          </div>
+          <div class="itin-day">
+            <div class="itin-day-chip">Day 5<br/><small>Jun 3</small></div>
+            <div class="itin-day-body">
+              <strong>LX Factory & Santos</strong>
+              <p>LX Factory market. Explore Santos & Cais do Sodré. Pink Street for evening drinks.</p>
+            </div>
+          </div>
+          <div class="itin-day">
+            <div class="itin-day-chip">Day 6<br/><small>Jun 4</small></div>
+            <div class="itin-day-body">
+              <strong>Day Trip: Arrábida</strong>
+              <p>Rent a car — turquoise waters rivalling the Caribbean. Pack a picnic. Stop at a winery on the way back.</p>
+            </div>
+          </div>
+          <div class="itin-day">
+            <div class="itin-day-chip">Day 7<br/><small>Jun 5</small></div>
+            <div class="itin-day-body">
+              <strong>Príncipe Real & Graça</strong>
+              <p>Antique market, botanical garden, Museu do Azulejo. Sunset at Miradouro da Graça.</p>
+            </div>
+          </div>
+          <div class="itin-day">
+            <div class="itin-day-chip">Day 8<br/><small>Jun 6</small></div>
+            <div class="itin-day-body">
+              <strong>Last Bites & Departure</strong>
+              <p>Time Out Market feast. Pick up ginjinha, tinned fish, azulejo tiles. Airport: allow 45 min from centre.</p>
+            </div>
+          </div>
         </div>
       </div>
+
+      <!-- Packing list -->
       <div id="packing-section" style="display:none">
         <div class="section-label" style="margin-top:8px">Packing Checklist</div>
-        <div class="glass-card"><div id="packing-list" class="packing-list"></div></div>
+        <div class="glass-card">
+          <div id="packing-list" class="packing-list"></div>
+        </div>
       </div>
+
     </section>
   </main>
 
   <div class="toast" id="toast"></div>
+
   <script src="data.js"></script>
   <script src="app.js"></script>
 </body>
