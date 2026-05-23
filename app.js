@@ -4,6 +4,7 @@ const STATE = {
   budget: parseFloat(localStorage.getItem('lx_budget')) || 0,
   expenses: JSON.parse(localStorage.getItem('lx_expenses') || '[]'),
   savedPlaces: JSON.parse(localStorage.getItem('lx_saved') || '[]'),
+  rates: {},
 };
 
 function save() {
@@ -28,6 +29,8 @@ document.addEventListener('DOMContentLoaded', () => {
     showBudgetBar();
     updateChipBudget();
   }
+  fetchWeather();
+  fetchRates();
 });
 
 // ── Countdown ────────────────────────────────────────────────────────────────
@@ -323,4 +326,145 @@ function showToast(msg) {
   t.textContent = msg;
   t.classList.add('show');
   setTimeout(() => t.classList.remove('show'), 2400);
+}
+
+// ── API helpers ───────────────────────────────────────────────────────────────
+
+const PROXY = 'http://localhost:8766/api';
+
+async function apiFetch(primaryUrl, proxyPath) {
+  try {
+    const r = await fetch(primaryUrl, { signal: AbortSignal.timeout(4000) });
+    if (!r.ok) throw new Error(r.status);
+    return r.json();
+  } catch {
+    const r = await fetch(PROXY + proxyPath);
+    return r.json();
+  }
+}
+
+// ── Live Weather (Open-Meteo) ─────────────────────────────────────────────────
+
+function wxEmoji(code) {
+  if (code === 0) return '☀️';
+  if (code <= 2) return '⛅';
+  if (code <= 3) return '☁️';
+  if (code <= 48) return '🌫️';
+  if (code <= 57) return '🌦️';
+  if (code <= 67) return '🌧️';
+  if (code <= 77) return '❄️';
+  if (code <= 82) return '🌦️';
+  if (code <= 99) return '⛈️';
+  return '🌡️';
+}
+
+function wxLabel(code) {
+  if (code === 0) return 'Sunny';
+  if (code <= 2) return 'Partly cloudy';
+  if (code <= 3) return 'Overcast';
+  if (code <= 48) return 'Foggy';
+  if (code <= 57) return 'Drizzle';
+  if (code <= 67) return 'Rain';
+  if (code <= 77) return 'Snow';
+  if (code <= 82) return 'Showers';
+  if (code <= 99) return 'Thunderstorm';
+  return 'Unknown';
+}
+
+async function fetchWeather() {
+  const base = 'https://api.open-meteo.com/v1/forecast?latitude=38.7223&longitude=-9.1393&timezone=Europe%2FLisbon';
+  try {
+    const [curr, fcst] = await Promise.all([
+      apiFetch(base + '&current=temperature_2m,weather_code,wind_speed_10m,apparent_temperature', '/weather/current'),
+      apiFetch(base + '&daily=temperature_2m_max,temperature_2m_min,weather_code,precipitation_probability_max&start_date=2026-05-30&end_date=2026-06-06', '/weather/forecast'),
+    ]);
+
+    const { temperature_2m, weather_code, wind_speed_10m } = curr.current;
+    const emoji = wxEmoji(weather_code);
+    const chip = document.getElementById('chip-weather');
+    if (chip) chip.innerHTML = `${emoji} ${Math.round(temperature_2m)}°C · Lisbon <span style="opacity:.6;font-size:10px">live</span>`;
+
+    const liveCard = document.getElementById('live-weather-card');
+    if (liveCard) {
+      liveCard.innerHTML = `
+        <div class="live-wx-now">
+          <div class="live-wx-emoji">${emoji}</div>
+          <div>
+            <div class="live-wx-temp">${Math.round(temperature_2m)}°C</div>
+            <div class="live-wx-desc">${wxLabel(weather_code)} · feels ${Math.round(curr.current.apparent_temperature)}°C · 💨 ${Math.round(wind_speed_10m)} km/h</div>
+          </div>
+        </div>
+      `;
+    }
+
+    renderWeatherForecast(fcst.daily);
+  } catch (e) {
+    console.warn('Weather fetch failed', e);
+    const el = document.getElementById('wx-forecast');
+    if (el) el.innerHTML = '<p class="empty-state">Weather unavailable</p>';
+  }
+}
+
+function renderWeatherForecast(daily) {
+  const el = document.getElementById('wx-forecast');
+  if (!el || !daily) return;
+  const dayNames = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+  const days = daily.time.map((date, i) => ({
+    date, dayName: dayNames[new Date(date + 'T12:00:00').getDay()],
+    max: Math.round(daily.temperature_2m_max[i]),
+    min: Math.round(daily.temperature_2m_min[i]),
+    code: daily.weather_code[i],
+    rain: daily.precipitation_probability_max[i],
+  }));
+  el.innerHTML = days.map(d => `
+    <div class="wx-day">
+      <div class="wx-day-name">${d.dayName}</div>
+      <div class="wx-emoji">${wxEmoji(d.code)}</div>
+      <div class="wx-temp">${d.max}°<span class="wx-min">/${d.min}°</span></div>
+      ${d.rain > 15 ? `<div class="wx-rain">💧${d.rain}%</div>` : '<div class="wx-rain"></div>'}
+    </div>
+  `).join('');
+}
+
+// ── Live Rates (Frankfurter) ──────────────────────────────────────────────────
+
+const RATE_PAIRS = [
+  { sym: 'GBP', flag: '🇬🇧', name: 'Pound' },
+  { sym: 'USD', flag: '🇺🇸', name: 'Dollar' },
+  { sym: 'JPY', flag: '🇯🇵', name: 'Yen' },
+  { sym: 'AUD', flag: '🇦🇺', name: 'AUD' },
+  { sym: 'CHF', flag: '🇨🇭', name: 'Franc' },
+];
+
+async function fetchRates() {
+  try {
+    const syms = RATE_PAIRS.map(p => p.sym).join(',');
+    const data = await apiFetch(`https://api.frankfurter.app/latest?base=EUR&symbols=${syms}`, '/rates');
+    STATE.rates = data.rates;
+    renderRates();
+    document.getElementById('conv-amount')?.addEventListener('input', doConvert);
+    document.getElementById('conv-to')?.addEventListener('change', doConvert);
+  } catch (e) {
+    console.warn('Rates fetch failed', e);
+    const el = document.getElementById('rate-list');
+    if (el) el.innerHTML = '<p class="empty-state">Rates unavailable</p>';
+  }
+}
+
+function renderRates() {
+  const el = document.getElementById('rate-list');
+  if (!el) return;
+  el.innerHTML = RATE_PAIRS.filter(p => STATE.rates[p.sym]).map(p => {
+    const r = STATE.rates[p.sym];
+    const fmt = r < 10 ? r.toFixed(4) : r.toFixed(2);
+    return `<div class="rate-item"><span class="rate-flag">${p.flag}</span><span class="rate-name">${p.name}</span><span class="rate-val">€1 = ${fmt} ${p.sym}</span></div>`;
+  }).join('');
+}
+
+function doConvert() {
+  const amount = parseFloat(document.getElementById('conv-amount').value) || 0;
+  const toSym = document.getElementById('conv-to').value;
+  if (!STATE.rates[toSym]) return;
+  const result = (amount * STATE.rates[toSym]).toFixed(toSym === 'JPY' ? 0 : 2);
+  document.getElementById('conv-result').textContent = `${result} ${toSym}`;
 }
