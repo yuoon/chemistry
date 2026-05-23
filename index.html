@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lisbon Travel Companion</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="header-content">
+      <div class="header-left">
+        <div class="logo">🏛️</div>
+        <div>
+          <h1 class="header-title">Lisbon</h1>
+          <p class="header-subtitle">Your Personal Travel Companion</p>
+        </div>
+      </div>
+      <div class="trip-countdown">
+        <span class="countdown-label">Trip starts in</span>
+        <span class="countdown-days" id="countdown-days">—</span>
+        <span class="countdown-label">days</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Navigation -->
+  <nav class="nav">
+    <button class="nav-btn active" data-tab="overview">Overview</button>
+    <button class="nav-btn" data-tab="suggestions">Suggestions</button>
+    <button class="nav-btn" data-tab="payments">Payments</button>
+    <button class="nav-btn" data-tab="agent">Travel Agent</button>
+  </nav>
+
+  <main class="main">
+
+    <!-- ── OVERVIEW TAB ── -->
+    <section id="tab-overview" class="tab-section active">
+      <div class="hero-card">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+          <h2 class="hero-title">Welcome to Lisboa</h2>
+          <p class="hero-desc">The city of seven hills, golden light, and soulful fado music. Your adventure starts soon.</p>
+          <div class="hero-meta">
+            <span>📅 May 30 – Jun 6, 2026</span>
+            <span>✈️ 8 days</span>
+            <span>🌡️ ~24°C / 75°F</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="cards-grid">
+        <div class="info-card">
+          <div class="info-card-icon">💶</div>
+          <div>
+            <div class="info-card-label">Budget Spent</div>
+            <div class="info-card-value" id="ov-spent">€0.00</div>
+          </div>
+        </div>
+        <div class="info-card">
+          <div class="info-card-icon">🎯</div>
+          <div>
+            <div class="info-card-label">Budget Remaining</div>
+            <div class="info-card-value" id="ov-remaining">€0.00</div>
+          </div>
+        </div>
+        <div class="info-card">
+          <div class="info-card-icon">📌</div>
+          <div>
+            <div class="info-card-label">Places Saved</div>
+            <div class="info-card-value" id="ov-places">0</div>
+          </div>
+        </div>
+        <div class="info-card">
+          <div class="info-card-icon">🧾</div>
+          <div>
+            <div class="info-card-label">Transactions</div>
+            <div class="info-card-value" id="ov-transactions">0</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Budget setup -->
+      <div class="card">
+        <h3 class="card-title">Trip Budget</h3>
+        <div class="budget-row">
+          <label class="budget-label">Total Budget (€)</label>
+          <div class="budget-input-row">
+            <input type="number" id="budget-input" class="budget-input" placeholder="e.g. 2000" min="0" />
+            <button class="btn-primary" onclick="setBudget()">Set Budget</button>
+          </div>
+        </div>
+        <div class="budget-bar-wrap" id="budget-bar-wrap" style="display:none">
+          <div class="budget-bar">
+            <div class="budget-bar-fill" id="budget-bar-fill"></div>
+          </div>
+          <div class="budget-bar-labels">
+            <span id="budget-bar-spent">€0 spent</span>
+            <span id="budget-bar-total">of €0</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick tips -->
+      <div class="card">
+        <h3 class="card-title">Essential Lisbon Tips</h3>
+        <div class="tips-list">
+          <div class="tip-item">
+            <span class="tip-icon">🚌</span>
+            <div>
+              <strong>Get a Viva Viagem card</strong> — load it with credit for trams, metro, buses, and ferries. Far cheaper than single tickets.
+            </div>
+          </div>
+          <div class="tip-item">
+            <span class="tip-icon">🍷</span>
+            <div>
+              <strong>Eat like a local</strong> — look for "prato do dia" (daily special) at local tascas. Full meal with wine for €10–12.
+            </div>
+          </div>
+          <div class="tip-item">
+            <span class="tip-icon">🌅</span>
+            <div>
+              <strong>Miradouros at sunset</strong> — Portas do Sol, Santa Catarina, and São Pedro de Alcântara are stunning. Go 30 min before sunset.
+            </div>
+          </div>
+          <div class="tip-item">
+            <span class="tip-icon">👟</span>
+            <div>
+              <strong>Wear comfortable shoes</strong> — Lisbon's hills and cobblestones (calçada portuguesa) are beautiful but unforgiving on flats.
+            </div>
+          </div>
+          <div class="tip-item">
+            <span class="tip-icon">💳</span>
+            <div>
+              <strong>Cash for small spots</strong> — many tascas and market stalls are cash-only. Keep €20–30 on hand daily.
+            </div>
+          </div>
+          <div class="tip-item">
+            <span class="tip-icon">☀️</span>
+            <div>
+              <strong>Late June heat</strong> — sun is intense by midday. Plan outdoor sightseeing before noon or after 5 PM.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── SUGGESTIONS TAB ── -->
+    <section id="tab-suggestions" class="tab-section">
+      <div class="suggestions-header">
+        <h2 class="section-title">Expert Picks for Lisbon</h2>
+        <div class="filter-row">
+          <button class="filter-btn active" data-filter="all">All</button>
+          <button class="filter-btn" data-filter="sight">Sights</button>
+          <button class="filter-btn" data-filter="food">Food & Drink</button>
+          <button class="filter-btn" data-filter="daytrip">Day Trips</button>
+          <button class="filter-btn" data-filter="experience">Experiences</button>
+        </div>
+      </div>
+
+      <div class="suggestions-grid" id="suggestions-grid">
+        <!-- populated by JS -->
+      </div>
+    </section>
+
+    <!-- ── PAYMENTS TAB ── -->
+    <section id="tab-payments" class="tab-section">
+      <div class="payments-layout">
+        <!-- Add expense form -->
+        <div class="card">
+          <h3 class="card-title">Add Expense</h3>
+          <div class="form-group">
+            <label class="form-label">Description</label>
+            <input type="text" id="exp-desc" class="form-input" placeholder="e.g. Lunch at Alfama" />
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Amount (€)</label>
+              <input type="number" id="exp-amount" class="form-input" placeholder="0.00" min="0" step="0.01" />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Category</label>
+              <select id="exp-category" class="form-input">
+                <option value="food">🍽️ Food & Drink</option>
+                <option value="transport">🚌 Transport</option>
+                <option value="accommodation">🏨 Accommodation</option>
+                <option value="activities">🎟️ Activities</option>
+                <option value="shopping">🛍️ Shopping</option>
+                <option value="other">📦 Other</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Date</label>
+            <input type="date" id="exp-date" class="form-input" />
+          </div>
+          <button class="btn-primary full-width" onclick="addExpense()">Add Expense</button>
+        </div>
+
+        <!-- Summary -->
+        <div class="card">
+          <h3 class="card-title">Spending by Category</h3>
+          <div class="category-summary" id="category-summary">
+            <p class="empty-state">No expenses yet. Start adding your Lisbon spending!</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Expense list -->
+      <div class="card">
+        <div class="expense-list-header">
+          <h3 class="card-title">All Expenses</h3>
+          <span class="expense-total-badge" id="expense-total-badge">€0.00 total</span>
+        </div>
+        <div id="expense-list">
+          <p class="empty-state">No expenses recorded yet.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── TRAVEL AGENT TAB ── -->
+    <section id="tab-agent" class="tab-section">
+      <div class="agent-header">
+        <div class="agent-avatar">🧳</div>
+        <div>
+          <h2 class="agent-name">Sofia — Your Lisbon Expert</h2>
+          <p class="agent-bio">15+ years specialising in Portugal & the Algarve. Born in Porto, based in London.</p>
+        </div>
+      </div>
+
+      <!-- Quick topic buttons -->
+      <div class="topic-grid">
+        <button class="topic-btn" onclick="showAdvice('neighbourhood')">🏘️ Best Neighbourhoods</button>
+        <button class="topic-btn" onclick="showAdvice('food')">🍽️ Food Guide</button>
+        <button class="topic-btn" onclick="showAdvice('transport')">🚌 Getting Around</button>
+        <button class="topic-btn" onclick="showAdvice('budget')">💶 Budget Tips</button>
+        <button class="topic-btn" onclick="showAdvice('safety')">🔒 Safety & Scams</button>
+        <button class="topic-btn" onclick="showAdvice('packing')">🎒 Packing List</button>
+        <button class="topic-btn" onclick="showAdvice('fado')">🎵 Fado & Nightlife</button>
+        <button class="topic-btn" onclick="showAdvice('daytrips')">🌊 Best Day Trips</button>
+      </div>
+
+      <!-- Advice display -->
+      <div class="advice-card" id="advice-card" style="display:none">
+        <div class="advice-header">
+          <span class="advice-icon" id="advice-icon"></span>
+          <h3 class="advice-title" id="advice-title"></h3>
+        </div>
+        <div class="advice-body" id="advice-body"></div>
+      </div>
+
+      <!-- Itinerary Builder -->
+      <div class="card">
+        <h3 class="card-title">🗓️ Suggested 8-Day Itinerary</h3>
+        <div class="itinerary">
+          <div class="itinerary-day">
+            <div class="day-label">Day 1 · May 30</div>
+            <div class="day-content">
+              <strong>Arrival &amp; Baixa/Chiado</strong>
+              <p>Check in, freshen up, then stroll Rua Augusta. Grab a pastel de nata at Pastéis de Belém (there's a central location too). Evening: rooftop drinks at TOPO Chiado.</p>
+            </div>
+          </div>
+          <div class="itinerary-day">
+            <div class="day-label">Day 2 · May 31</div>
+            <div class="day-content">
+              <strong>Alfama &amp; Fado Night</strong>
+              <p>Morning: São Jorge Castle, wander Alfama's alleys. Afternoon: Portas do Sol miradouro. Evening: authentic fado dinner at Tasca do Chico (book ahead!).</p>
+            </div>
+          </div>
+          <div class="itinerary-day">
+            <div class="day-label">Day 3 · Jun 1</div>
+            <div class="day-content">
+              <strong>Belém District</strong>
+              <p>Jerónimos Monastery, Torre de Belém, MAAT museum. Have the famous original pastel de nata. Take tram 15E or Uber — don't battle tram 28 with a crowd.</p>
+            </div>
+          </div>
+          <div class="itinerary-day">
+            <div class="day-label">Day 4 · Jun 2</div>
+            <div class="day-content">
+              <strong>Day Trip: Sintra</strong>
+              <p>Take the train from Rossio (40 min, €2.35). Pena Palace first thing — queues build fast. Also Quinta da Regaleira if time allows. Back by 6 PM.</p>
+            </div>
+          </div>
+          <div class="itinerary-day">
+            <div class="day-label">Day 5 · Jun 3</div>
+            <div class="day-content">
+              <strong>LX Factory &amp; Santos</strong>
+              <p>Sunday market at LX Factory (if applicable). Explore the trendy Santos & Cais do Sodré areas. Pink Street (Rua Nova do Carvalho) for evening drinks.</p>
+            </div>
+          </div>
+          <div class="itinerary-day">
+            <div class="day-label">Day 6 · Jun 4</div>
+            <div class="day-content">
+              <strong>Day Trip: Setúbal &amp; Arrábida</strong>
+              <p>Rent a car or join a tour for Arrábida Natural Park — turquoise waters rivalling the Caribbean. Pack a picnic. Stop at a winery on the way back.</p>
+            </div>
+          </div>
+          <div class="itinerary-day">
+            <div class="day-label">Day 7 · Jun 5</div>
+            <div class="day-content">
+              <strong>Bairro Alto &amp; Príncipe Real</strong>
+              <p>Morning: Príncipe Real's antique market and botanical garden. Lunch: tasca lunch. Afternoon: MUDE or Museu do Azulejo. Evening: sunset at Miradouro da Graça.</p>
+            </div>
+          </div>
+          <div class="itinerary-day">
+            <div class="day-label">Day 8 · Jun 6</div>
+            <div class="day-content">
+              <strong>Last Bites &amp; Departure</strong>
+              <p>Time Out Market for a last Lisbon feast. Pick up ginjinha, tinned fish, and azulejo tiles as gifts. Head to Humberto Delgado Airport — allow 45 min from centre.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Packing checklist -->
+      <div class="card" id="packing-section" style="display:none">
+        <h3 class="card-title">🎒 Packing Checklist</h3>
+        <div id="packing-list" class="packing-list"></div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Toast notification -->
+  <div class="toast" id="toast"></div>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
