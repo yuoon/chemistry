@@ -37,7 +37,7 @@ const SUGGESTIONS = [
     price: "€",
     cost: "€6",
     duration: "1 hr",
-    tip: "Iconic but small inside. Best enjoyed from outside and combined with a walk along the waterfront.",
+    tip: "Reopened 2026 after renovations. Interior is small — the real reward is the waterfront walk from the tower to Padrão dos Descobrimentos at golden hour. Wide open, breezy, spectacular.",
     mustDo: false,
     tags: ["UNESCO", "History", "Waterfront"]
   },
@@ -63,9 +63,35 @@ const SUGGESTIONS = [
     price: "Free",
     cost: "Free",
     duration: "30–60 min",
-    tip: "Locals' favourite viewpoint — less crowded than Santa Luzia. Perfect at golden hour with a cerveja from the kiosk.",
+    tip: "Locals' favourite viewpoint — far fewer tourists than Santa Luzia or Portas do Sol. Golden hour + cold cerveja from the kiosk = perfect. Neighbouring Graça streets feel genuinely unlisted.",
     mustDo: true,
     tags: ["Views", "Sunset", "Local"]
+  },
+  {
+    id: 21, type: "sight",
+    name: "Miradouro da Senhora do Monte",
+    area: "Graça",
+    emoji: "⛰️",
+    rating: 5,
+    price: "Free",
+    cost: "Free",
+    duration: "30–45 min",
+    tip: "Lisbon's highest viewpoint — 360° panorama over all seven hills and the Tagus. Less known than the main miradouros, which means you might have the bench to yourself. Arrive 30–45 min before sunset.",
+    mustDo: true,
+    tags: ["Views", "Hidden", "Sunset"]
+  },
+  {
+    id: 22, type: "sight",
+    name: "Miradouro de Santa Catarina",
+    area: "Bica",
+    emoji: "🌇",
+    rating: 5,
+    price: "Free",
+    cost: "Free",
+    duration: "1–2 hrs",
+    tip: "Lisbon's sunset social scene. Faces south over the Tejo estuary — the light is golden and the vibe is electric. Locals show up from 6 PM with wine and speakers. Don't miss it.",
+    mustDo: true,
+    tags: ["Views", "Sunset", "Vibes"]
   },
   {
     id: 6, type: "sight",
@@ -89,9 +115,9 @@ const SUGGESTIONS = [
     emoji: "🍽️",
     rating: 5,
     price: "€€",
-    cost: "€10–20/person",
+    cost: "€20+/person",
     duration: "1–2 hrs",
-    tip: "The original — still the best food hall in Europe. Try bacalhau à Brás, ginjinha shots, and Portuguese cheeses.",
+    tip: "The original — still the best food hall in Europe. Budget €20+ per person. Go for bacalhau à Brás, petiscos, and ginjinha shots. Locals don't eat here daily — treat it as a curated best-of Lisbon experience.",
     mustDo: true,
     tags: ["Market", "Seafood", "Local"]
   },
@@ -143,9 +169,22 @@ const SUGGESTIONS = [
     price: "€",
     cost: "€1.50/shot",
     duration: "10 min",
-    tip: "Standing-only ginjinha bar that's been here forever. Get it 'com elas' — with the cherries. A Lisbon ritual.",
+    tip: "Standing-only ginjinha bar. Get it 'com elas' — with the cherries in the glass. €1.50, no seats, no menus, no fuss. End your night here or use it as a punctuation mark between dinner and fado.",
     mustDo: true,
     tags: ["Drinks", "Local", "Iconic"]
+  },
+  {
+    id: 23, type: "food",
+    name: "Bifana at O Trevo",
+    area: "Rossio",
+    emoji: "🥖",
+    rating: 5,
+    price: "€",
+    cost: "€2–3",
+    duration: "15 min",
+    tip: "Lisbon's #1 street food: marinated pork in a crusty roll with wine, garlic, and a hint of chili. O Trevo near Rossio is legendary. Eat it standing at the counter — it genuinely tastes better that way.",
+    mustDo: true,
+    tags: ["Street Food", "Lunch", "Cheap"]
   },
   {
     id: 12, type: "food",
@@ -165,13 +204,13 @@ const SUGGESTIONS = [
   {
     id: 13, type: "daytrip",
     name: "Sintra",
-    area: "30 min from Lisbon",
+    area: "38 min from Lisbon",
     emoji: "🏯",
     rating: 5,
     price: "€€",
-    cost: "€2.35 train + €14–15 palace tickets",
+    cost: "€2.45 train + €14–15 palace tickets",
     duration: "Full day",
-    tip: "Take the 7:30 AM train from Rossio to beat the crowds at Pena Palace. Also see Quinta da Regaleira's mysterious initiation well.",
+    tip: "Board the 8 AM train from Rossio — tour buses hit Pena Palace by 9 AM. Sintra has its own microclimate: even if Lisbon is sunny, expect morning fog that clears by afternoon. Buy palace tickets online in advance.",
     mustDo: true,
     tags: ["UNESCO", "Palaces", "Nature"]
   },
@@ -191,13 +230,13 @@ const SUGGESTIONS = [
   {
     id: 15, type: "daytrip",
     name: "Cascais & Estoril",
-    area: "40 min from Lisbon",
+    area: "33–40 min from Lisbon",
     emoji: "🌊",
     rating: 4,
     price: "€",
-    cost: "€3.90 train return",
+    cost: "€2.45 train one-way",
     duration: "Half or full day",
-    tip: "Charming fishing town turned glamorous coastal resort. Visit Boca do Inferno cliffs. Walk the 3km coastal path to Estoril.",
+    tip: "Train from Cais do Sodré every 15–30 min. Walk the sea promenade to Boca do Inferno blowhole cliffs. The adventurous can keep walking 9km more to wild Guincho Beach on the Atlantic.",
     mustDo: false,
     tags: ["Beach", "Coastal", "Easy"]
   },
@@ -238,9 +277,22 @@ const SUGGESTIONS = [
     price: "€",
     cost: "€3 (Viva Viagem: €1.55)",
     duration: "45 min",
-    tip: "Iconic yellow tram through Alfama's narrowest streets. Go early morning (8–9 AM) to avoid huge tourist crowds. Watch your pockets.",
+    tip: "The most pickpocketed tram in Europe — money belt mandatory. Go before 9 AM or after 6 PM to avoid sardine-can crowds. For Alfama without the chaos, take Tram 12E instead (same hills, fraction of the tourists).",
     mustDo: false,
     tags: ["Iconic", "Transport", "Scenic"]
+  },
+  {
+    id: 24, type: "experience",
+    name: "Petiscos Bar-Hop, Bairro Alto",
+    area: "Bairro Alto",
+    emoji: "🍢",
+    rating: 5,
+    price: "€€",
+    cost: "€20–30/person",
+    duration: "3–4 hrs",
+    tip: "The local way to eat: drift between tiny bars from 6–10 PM, ordering one or two petiscos (Portuguese tapas) in each. Bairro Alto's cobblestone streets spill out to the footpath by 10 PM. No reservations, no rush.",
+    mustDo: true,
+    tags: ["Nightlife", "Food", "Local"]
   },
   {
     id: 19, type: "experience",
@@ -279,19 +331,21 @@ const ADVICE = {
     body: `
       <h4>Where to Stay</h4>
       <ul>
-        <li><strong>Chiado / Bairro Alto</strong> — Chic, central, great restaurants and bars. Best for first-timers. Noisy at night near Bairro Alto.</li>
-        <li><strong>Príncipe Real</strong> — Sophisticated, leafy, boutique hotels. Antique shops, great cafés, quiet evenings. My top pick.</li>
-        <li><strong>Alfama</strong> — Atmospheric and historic, but hilly. Book carefully — some "Alfama" listings are far from the action.</li>
-        <li><strong>Mouraria</strong> — Authentic, multicultural, off the tourist trail. Great food. Some streets feel rough at night.</li>
-        <li><strong>Belém</strong> — Peaceful, spacious, perfect if you want to avoid crowds. 20 min to centre by tram or Uber.</li>
+        <li><strong>Chiado / Bairro Alto</strong> — Chic, central, great restaurants and bars. Best for first-timers. Noisy near Bairro Alto past midnight.</li>
+        <li><strong>Príncipe Real</strong> — Sophisticated, leafy, boutique hotels. Antique shops, great cafés, quiet evenings. Sofia's top pick.</li>
+        <li><strong>Alfama</strong> — Atmospheric and historic but hilly. Book carefully — some "Alfama" listings are 15+ min walk from anything. Explore early morning or late evening: cats on doorsteps, no crowds.</li>
+        <li><strong>Mouraria</strong> — Birthplace of fado. Multicultural, authentic, less touristy. Genuinely diverse street food. Some streets feel edgy after midnight.</li>
+        <li><strong>Belém</strong> — Peaceful, spacious, river views. 20 min to centre by Tram 15E. Perfect if you hate noise.</li>
       </ul>
       <h4>Neighbourhoods to Explore (Not Stay)</h4>
       <ul>
-        <li><strong>Intendente</strong> — Gritty-cool regeneration zone. Excellent coffee, multicultural street food.</li>
-        <li><strong>Marvila</strong> — Lisbon's East End: warehouses turned into breweries, galleries, wine bars. Worth an evening.</li>
-        <li><strong>Santos / Cais do Sodré</strong> — Evening and night scene. Pink Street, seafood restaurants, rooftop bars.</li>
+        <li><strong>Graça</strong> — Same hills as Alfama but a fraction of the tourists. Genuinely local. Best miradouros. Walk here, don't rush.</li>
+        <li><strong>Campo de Ourique</strong> — Residential, calm, where Lisboetas actually live. Mercado de Campo de Ourique for cheap, excellent petiscos.</li>
+        <li><strong>Intendente</strong> — Gritty-cool regeneration zone. Excellent coffee, multicultural street food. Where locals are moving.</li>
+        <li><strong>Marvila</strong> — Lisbon's East End: warehouses turned breweries, galleries, natural wine bars. Worth a Sunday evening.</li>
+        <li><strong>Santos / Cais do Sodré</strong> — Pink Street nightlife, seafood restaurants, the ferry terminal for Tagus crossings.</li>
       </ul>
-      <p><em>Sofia's pick: Stay in Príncipe Real for the best balance of charm, access, and quality of life.</em></p>
+      <p><em>Sofia's pick: Príncipe Real for the best balance of charm, access, and quality of life. Book 2–3 months ahead for May–June.</em></p>
     `
   },
   food: {
@@ -300,26 +354,32 @@ const ADVICE = {
     body: `
       <h4>Must-Eat Dishes</h4>
       <ul>
-        <li><strong>Pastel de Nata</strong> — Custard tart. Non-negotiable. Eat warm, with cinnamon.</li>
-        <li><strong>Bacalhau à Brás</strong> — Shredded salt cod with eggs, onions, and crisps. Comfort food of the gods.</li>
+        <li><strong>Pastel de Nata</strong> — Custard tart. Non-negotiable. Eat warm at Pastéis de Belém with cinnamon and powdered sugar. The recipe hasn't changed since 1837.</li>
+        <li><strong>Bifana</strong> — Marinated pork in a crusty roll with white wine, garlic, and a hint of chili. Eat it standing at the counter at O Trevo near Rossio. €2–3. Tastes better that way — it's a fact.</li>
+        <li><strong>Bacalhau à Brás</strong> — Shredded salt cod with scrambled eggs, onions, and matchstick crisps. Comfort food of the gods.</li>
         <li><strong>Ameijoas à Bulhão Pato</strong> — Clams in garlic, olive oil, coriander, white wine. Order with crusty bread to soak it up.</li>
-        <li><strong>Bifanas</strong> — Pork sandwich with mustard. Street food staple. Buy from O Trevo near Rossio for €2.</li>
         <li><strong>Pastéis de Bacalhau</strong> — Crispy salt cod cakes. Perfect with a cold Sagres.</li>
-        <li><strong>Francesinha</strong> — This is Porto's dish but Tasca do Chico sometimes does a riff on it. Rich, meaty, saucy.</li>
+        <li><strong>Petiscos</strong> — Portuguese tapas. The local way: drift between bars from 6–10 PM, two plates per stop. Flavorful, shareable, never rushed.</li>
       </ul>
       <h4>Dining Rhythm</h4>
       <ul>
-        <li>Breakfast (8–10 AM): coffee + pastel de nata at a local café. Never pay café prices at tourist spots.</li>
-        <li>Lunch (1–3 PM): prato do dia at a tasca — soup, main, dessert, wine: €10–13. Best value in Europe.</li>
-        <li>Petiscos hour (6–8 PM): Portuguese tapas with wine. Taberna da Rua das Flores or Tasca do Lagarto.</li>
-        <li>Dinner (9–11 PM): Locals eat late. Restaurants fill up after 8:30 PM.</li>
+        <li><strong>Breakfast (8–10 AM):</strong> coffee + pastel de nata at a local pastelaria. Pay €2.50+ at tourist spots? Walk away.</li>
+        <li><strong>Lunch (1–3 PM):</strong> prato do dia at a tasca — soup, main, dessert, half-litre wine: €10–13. Best value in Europe, full stop.</li>
+        <li><strong>Petiscos (6–10 PM):</strong> bar-hop Bairro Alto or Mouraria for small plates and house wine. No reservations needed.</li>
+        <li><strong>Dinner (9–11 PM):</strong> Locals eat late. Restaurants fill up after 8:30 PM. Restaurants with five-language menus and someone standing outside waving you in = avoid.</li>
       </ul>
       <h4>Drinks</h4>
       <ul>
-        <li>Wine: Vinho Verde (crisp, slightly fizzy), Alentejo reds, Moscatel de Setúbal for dessert.</li>
-        <li>Beer: Sagres and Super Bock. Order "uma imperial" for a draft.</li>
-        <li>Ginjinha: cherry liqueur. €1.50 at Ginjinha Sem Rival in Rossio. Drink standing.</li>
-        <li>Coffee: "uma bica" = espresso. "Um galão" = latte. Never order a cappuccino.</li>
+        <li>Wine: Vinho Verde (crisp, slightly sparkling), Alentejo reds, Moscatel de Setúbal for dessert. €2–3 a glass at any tasca.</li>
+        <li>Beer: Sagres and Super Bock. "Uma imperial" = draft pint. Or grab a Sagres at the supermarket for €0.70.</li>
+        <li>Ginjinha: sour cherry liqueur. €1.50 a shot at Ginjinha Sem Rival in Rossio. Get it "com elas" — with the cherries.</li>
+        <li>Coffee: "uma bica" = espresso. "Um galão" = tall latte. Skip the cappuccino; order like a local.</li>
+      </ul>
+      <h4>Where to Find the Real Stuff</h4>
+      <ul>
+        <li><strong>Tascas</strong> — Simple, traditional, half the price of trendy spots. No English menus is a good sign.</li>
+        <li><strong>Mercado de Arroios or Campo de Ourique</strong> — Less touristy than Time Out. Fresh produce, artisan cheeses, proper petiscos.</li>
+        <li><strong>Cervejaria Ramiro</strong> — For the full seafood splurge: tiger prawns, barnacles (percebes), and clams with an Imperial Sagres. Go at lunch to skip the dinner queue.</li>
       </ul>
     `
   },
@@ -327,30 +387,30 @@ const ADVICE = {
     icon: "🚌",
     title: "Getting Around Lisbon",
     body: `
-      <h4>Viva Viagem Card — Your #1 Priority</h4>
-      <p>Buy at any metro station (€0.50 card fee). Load with "Zapping" credit — valid on metro, buses, trams, and ferries. Metro ride: €1.55. Much cheaper than single tickets (€1.99+).</p>
+      <h4>Viva Viagem Card — Get This First</h4>
+      <p>Buy at any metro station on arrival (€0.50 card fee). Load "Zapping" credit — works on metro, buses, trams, and ferries. Metro: €1.55. Tram: €1.55. Single tickets at the machine cost more; don't bother.</p>
 
       <h4>Metro</h4>
-      <p>4 lines, clean, fast, air-conditioned. Covers most tourist areas except Alfama and Belém. 6:30 AM – 1 AM. Your primary tool for covering distance.</p>
+      <p>4 lines, clean, fast, air-conditioned. Covers most areas except Alfama and Belém (which need trams or Uber). Runs 6:30 AM – 1 AM. Your backbone for covering distance quickly.</p>
 
-      <h4>Trams</h4>
+      <h4>Trams — Know the Difference</h4>
       <ul>
-        <li><strong>Tram 28</strong>: Famous but packed with tourists and pickpockets. Worth it early AM. Use Viva Viagem (not paper ticket).</li>
-        <li><strong>Tram 15E</strong>: Goes to Belém. More modern, less crowded, air-conditioned. Recommended over 28 for Belém trips.</li>
-        <li><strong>Tram 12E</strong>: Alfama loop. Short and useful.</li>
+        <li><strong>Tram 28</strong>: Beautiful route through Alfama. Also Lisbon's most pickpocketed vehicle. Take it before 9 AM or after 6 PM only. Keep valuables in a front pocket or money belt.</li>
+        <li><strong>Tram 12E</strong>: The insider alternative — covers the same Alfama hills, far fewer tourists. Take this instead of 28 when it's busy.</li>
+        <li><strong>Tram 15E</strong>: Modern, air-conditioned, goes to Belém. Much better than 28 for the waterfront trip.</li>
       </ul>
 
       <h4>Buses</h4>
-      <p>Extensive network. Use Google Maps or Moovit app — both work brilliantly in Lisbon. Night buses (night owl routes) run when metro closes.</p>
+      <p>Extensive network. Google Maps and Moovit both work brilliantly in Lisbon. Night owl routes run when the metro closes — handy for late Bairro Alto nights.</p>
 
       <h4>Ferries</h4>
-      <p>Transtejo ferries cross the Tagus to Cacilhas, Barreiro, and Montijo. Scenic and cheap (~€1.55 with Viva Viagem). The Cacilhas crossing for dinner is a local favourite.</p>
+      <p>Transtejo ferries cross the Tagus to Cacilhas (~€1.55 with Viva Viagem). 10-min ride with sweeping views of Lisbon's skyline. Take the ferry to Cacilhas for dinner at a riverside fish restaurant — genuinely one of the best local experiences.</p>
 
       <h4>Uber / Bolt</h4>
-      <p>Both work well. Bolt tends to be slightly cheaper. Useful for late nights, Alfama hills, and airport. Airport to centre: ~€15–25.</p>
+      <p>Both work well. Bolt is usually slightly cheaper. Essential for Alfama hills at night, late returns, and anything with luggage. Airport to centre: ~€15–25 (25 min).</p>
 
-      <h4>Airport</h4>
-      <p>Humberto Delgado Airport is on the red metro line — 25 min to centre, €1.55. Uber runs €15–25. No need for an airport taxi — they're overpriced.</p>
+      <h4>Airport Hack</h4>
+      <p>Red metro line from the airport to Alameda/Marquês de Pombal: 20–25 min, €1.55. Skip the airport taxi queue entirely.</p>
     `
   },
   budget: {
@@ -393,22 +453,23 @@ const ADVICE = {
     title: "Safety, Scams & Common Sense",
     body: `
       <h4>Overall Safety</h4>
-      <p>Lisbon is one of Europe's safest capitals. Violent crime is rare. The main risks are petty theft and tourist scams. Relax, but stay smart.</p>
+      <p>Lisbon is one of Europe's safest capitals. Violent crime is very rare. The main risks are petty theft and tourist traps. Relax — but stay smart about your bag.</p>
 
       <h4>Pickpocket Hotspots</h4>
       <ul>
-        <li><strong>Tram 28</strong> — The most pickpocketed tram in Europe. Use a hidden money belt or keep valuables in front pockets.</li>
-        <li><strong>Alfama's narrow alleys</strong> — Beautiful but easy for bag snatchers on mopeds. Keep bags on your inside shoulder.</li>
-        <li><strong>Rossio & Praça do Comércio</strong> — Busy squares attract distraction thieves. Don't flash expensive cameras/phones.</li>
-        <li><strong>Baixa at night</strong> — Can get rough around Intendente after midnight. Stick to lit streets.</li>
+        <li><strong>Tram 28</strong> — The most pickpocketed tram in Europe. Money belt or valuables in front pockets only. Or take Tram 12E instead.</li>
+        <li><strong>Alfama & Baixa</strong> — Narrow alleys are beautiful but moped bag-snatchers operate here. Wear your bag in front.</li>
+        <li><strong>Rossio & Praça do Comércio</strong> — Busy squares attract distraction-based thieves. Don't flash phones or cameras.</li>
+        <li><strong>Café chairs</strong> — Never hang your bag on the back of a chair. Keep it on your lap or between your feet.</li>
       </ul>
 
       <h4>Common Scams</h4>
       <ul>
-        <li><strong>Fado "free show" lure</strong> — Someone offers a free fado show, then you get a €80 drinks bill. Walk away.</li>
-        <li><strong>Overcharging taxis</strong> — Always use Uber/Bolt or confirm meter is running. Official taxis are fine but confirm the rate.</li>
-        <li><strong>CD scam</strong> — Someone puts a CD in your hands and demands money. Drop it and walk.</li>
-        <li><strong>Friendship bracelet</strong> — Tied on your wrist, then payment demanded. Don't let anyone touch your wrist.</li>
+        <li><strong>Fado "free show" invite</strong> — Someone on the street offers a free fado show, you end up with a €80 drinks bill. Walk away politely.</li>
+        <li><strong>Friendship bracelet</strong> — Someone ties a bracelet on your wrist uninvited, then demands payment. Don't let anyone touch your wrist.</li>
+        <li><strong>CD in your hands</strong> — A stranger places a CD in your hands and demands money. Drop it, keep walking.</li>
+        <li><strong>Taxi overcharging</strong> — Always use Uber/Bolt or confirm the meter is running from the start. Official taxis are generally fine.</li>
+        <li><strong>Restaurants on main squares</strong> — Rossio and Praça do Comércio restaurants are often overpriced with mediocre food. Walk two streets in any direction.</li>
       </ul>
 
       <h4>Emergency Numbers</h4>
@@ -464,27 +525,28 @@ const ADVICE = {
     icon: "🌊",
     title: "Best Day Trips from Lisbon",
     body: `
-      <h4>🏯 Sintra (Must-Do) — 40 min</h4>
-      <p>UNESCO World Heritage site. Take the train from Rossio station. Highlights: Pena Palace (fairy-tale colours on a hilltop), Quinta da Regaleira (mysterious initiation wells and Masonic gardens), Sintra National Palace in the town centre. Buy a combo ticket online to skip queues. Budget: €30–40 for transport + entries.</p>
+      <h4>🏯 Sintra — 38 min train from Rossio</h4>
+      <p>UNESCO World Heritage. Train every 10–30 min, €2.45 one-way. Highlights: Pena Palace (fairy-tale colours on a cloud-capped hill), Quinta da Regaleira (Masonic initiation wells, underground tunnels). Key tip: trains leave hourly before 8 AM, then get packed. Board the 8 AM train from Rossio. Sintra has its own micro-climate — morning fog often clears by midday. Buy palace tickets online. Budget €30–40 total.</p>
 
       <h4>🏖️ Arrábida Natural Park — 45 min drive</h4>
-      <p>The most beautiful beaches near Lisbon. Turquoise water, dramatic limestone cliffs, crystal clear visibility for snorkelling. Rent a car or book a day tour (€40–60). Best beaches: Portinho da Arrábida, Galapinhos (hike-in only). Stop at José Maria da Fonseca winery for Moscatel de Setúbal on the way back.</p>
+      <p>The best beaches near Lisbon. Turquoise water, limestone cliffs, snorkelling visibility like the Caribbean. Rent a car or book a group tour (€40–60). Best beaches: Portinho da Arrábida, Galapinhos (hike-in only). On the way back, stop at José Maria da Fonseca for Moscatel de Setúbal. Access roads get restricted in summer — book a tour to avoid parking chaos.</p>
 
-      <h4>🌊 Cascais — 40 min train</h4>
-      <p>Former royal summer resort, now a chic coastal town. Train from Cais do Sodré (€3.90 return). Walk the sea promenade to Boca do Inferno (blowhole cliffs). Good beaches, excellent seafood restaurants. Can continue walking 9km to Guincho Beach — wild Atlantic dunes.</p>
+      <h4>🌊 Cascais — 33–40 min train from Cais do Sodré</h4>
+      <p>Former royal resort, now a gorgeous coastal town. Trains every 15–30 min, €2.45 one-way. Walk the sea promenade to Boca do Inferno blowhole cliffs. The adventurous can keep walking 9km to wild Guincho Beach on the open Atlantic — bring sunscreen and water.</p>
 
-      <h4>🏟️ Óbidos — 1 hr bus</h4>
-      <p>Perfectly preserved 12th-century walled town. Walk the walls, drink ginja from a chocolate cup, wander white-and-blue painted streets. Half-day is plenty. Combine with Nazaré (giant waves, cliff-top views) if you have a car.</p>
+      <h4>🏟️ Óbidos — 1 hr bus from Praça de Espanha</h4>
+      <p>Perfectly preserved 12th-century walled town. Walk the ramparts, drink ginja from a chocolate cup (an Óbidos tradition), wander blue-and-white painted streets. Half-day is enough. Combine with Nazaré (giant waves, dramatic cliff viewpoints) if you hire a car.</p>
 
       <h4>🐬 Setúbal & Tróia — 1 hr</h4>
-      <p>Cross the estuary by ferry to Tróia Peninsula — 18km of Atlantic beach with dolphin-watching cruises. Setúbal itself has an excellent fish market and great restaurants. Best with a car or a guided tour.</p>
+      <p>Ferry across the estuary to Tróia Peninsula — 18km of Atlantic beach with dolphin-watching cruises. Setúbal has a brilliant fish market and waterfront restaurants. Best with a car or guided tour.</p>
 
-      <h4>Tips for Day Trips</h4>
+      <h4>Day Trip Rules</h4>
       <ul>
-        <li>Book Sintra tickets online — Palace queues can be 2+ hours without pre-booking.</li>
-        <li>Start early (7–8 AM) for all day trips — you'll share sights with far fewer people.</li>
-        <li>For Arrábida: Parking near the best beaches is restricted in summer. Join a tour or rent a scooter/bike.</li>
-        <li>Lisbon Card includes some day-trip train discounts — check before buying individual tickets.</li>
+        <li>Sintra: book Pena Palace tickets online. Queues without pre-booking can hit 2+ hours in May–June.</li>
+        <li>Leave early — all day trips get more crowded after 10 AM. Aim to board by 8 AM.</li>
+        <li>Arrábida beach parking is restricted June–Sept. Take a tour or risk a long walk.</li>
+        <li>Lisbon Card covers some train routes — check before buying individual tickets.</li>
+        <li>Sesimbra has no train — take a bus from Praça de Espanha (1 hr) or rent a car.</li>
       </ul>
     `
   }
